@@ -11,11 +11,15 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movementInput;
 
     private List<RaycastHit2D> _collision2Ds = new List<RaycastHit2D>();
+    private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -23,33 +27,48 @@ public class PlayerController : MonoBehaviour
         if (_movementInput != Vector2.zero) //when moved 
         {
             bool yesMoved = CanMove(_movementInput);
-            if (!yesMoved)
+            if (!yesMoved) 
             {
                 yesMoved = CanMove(new Vector2(_movementInput.x,0)); //slide on direction x when forced to move diagonally
-                if (!yesMoved)
+                if (!yesMoved ) 
                 {
                     yesMoved = CanMove(new Vector2(_movementInput.y, 0));  //slide on direction y when forced to move diagonally
                 }
             }
+            _animator.SetBool("IsMoving", yesMoved);//do move_anim
         }
+        else
+        {
+            _animator.SetBool("IsMoving",false);//dont move_anim
+        }
+
+        if (_movementInput.x < 0) { _spriteRenderer.flipX = true; }
+        else if(_movementInput.x >0) { _spriteRenderer.flipX = false; }
     }
 
     private bool CanMove(Vector2 direction)
     {
-        //collision check using raycast
-        int count = _rigidbody2D.Cast(direction, moveFilter, _collision2Ds,
-            moveSpeed * Time.deltaTime + collisionOffset);
-        if (count == 0)
+        if (direction != Vector2.zero)
         {
-            _rigidbody2D.MovePosition(_rigidbody2D.position +
-                                      direction *
-                                      (Time.fixedDeltaTime *
-                                       moveSpeed)); //amount of time between frames * movement speed  = how far its supposed to move
-            return true;
+            //collision check using raycast
+            int count = _rigidbody2D.Cast(direction, moveFilter, _collision2Ds,
+                moveSpeed * Time.deltaTime + collisionOffset);
+            if (count == 0)
+            {
+                _rigidbody2D.MovePosition(_rigidbody2D.position +
+                                          direction *
+                                          (Time.fixedDeltaTime *
+                                           moveSpeed)); //amount of time between frames * movement speed  = how far its supposed to move
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
-            return false;
+            return false; //no move_anim when no direction
         }
     }
 

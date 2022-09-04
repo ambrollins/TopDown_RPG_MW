@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1803422687556426316}
   - component: {fileID: 3542811060516945417}
   - component: {fileID: 2327696404225794853}
+  - component: {fileID: 3777108319716749838}
+  - component: {fileID: 3958583276114824750}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -144,7 +146,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  moveSpeed: 1
+  moveSpeed: 0.7
   collisionOffset: 0.5
 --- !u!50 &3542811060516945417
 Rigidbody2D:
@@ -193,3 +195,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0809264, y: 0.019530058}
   m_EdgeRadius: 0
+--- !u!95 &3777108319716749838
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617272990669871890}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ec87076bbd7755a48834075cacb28a36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &3958583276114824750
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617272990669871890}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.1}
+  serializedVersion: 2
+  m_Radius: 0.36
