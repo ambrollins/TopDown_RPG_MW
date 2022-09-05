@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3542811060516945417}
   - component: {fileID: 2327696404225794853}
   - component: {fileID: 3777108319716749838}
-  - component: {fileID: 3958583276114824750}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -102,7 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: 0}
+  m_Actions: {fileID: -944628639613478452, guid: 4e57711b42ddbc74788164be4df8a465, type: 3}
   m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -117,7 +116,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1803422687556426316
@@ -147,7 +146,8 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   moveSpeed: 0.7
-  collisionOffset: 0.5
+  collisionOffset: 0.02
+  collectibles: {fileID: 0}
 --- !u!50 &3542811060516945417
 Rigidbody2D:
   serializedVersion: 4
@@ -182,7 +182,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00045814365, y: -0.16107023}
+  m_Offset: {x: 0.00045814365, y: -0.16344282}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -193,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.0809264, y: 0.019530058}
+  m_Size: {x: 0.0809264, y: 0.030602157}
   m_EdgeRadius: 0
 --- !u!95 &3777108319716749838
 Animator:
@@ -215,19 +215,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!58 &3958583276114824750
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7617272990669871890}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.1}
-  serializedVersion: 2
-  m_Radius: 0.36

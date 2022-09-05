@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
@@ -14,6 +15,8 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
+    [SerializeField] private Transform collectibles;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +75,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnMove(InputValue inputValue)
+    void OnTriggerEnter2D(Collider2D other) 
+    {
+        if(other.CompareTag("Collectibles"))
+        {
+            print("trigger for collectibles");
+        }
+    }
+
+    private void OnMove(InputValue inputValue)
     {
         _movementInput = inputValue.Get<Vector2>();
     }
