@@ -15,8 +15,23 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
 
+    public int rocksCollectedCount = 0;
+    
     [SerializeField] private Transform collectibles;
-   
+    public static PlayerController Instance;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(Instance);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

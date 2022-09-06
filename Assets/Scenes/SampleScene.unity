@@ -6107,6 +6107,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1616084458}
     m_Modifications:
+    - target: {fileID: 8434239031784512088, guid: 56bf1edee9ca6de43b4c36a8ec668099, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8434239031784512100, guid: 56bf1edee9ca6de43b4c36a8ec668099, type: 3}
       propertyPath: m_Name
       value: C_Rock
