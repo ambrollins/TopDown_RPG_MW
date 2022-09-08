@@ -13,6 +13,7 @@ namespace _Scripts
         //! pops up to notify player about it
         //when pressed E and in range player can pick that item up
         //when taken to players inventory delete from environment
+        
         [FormerlySerializedAs("collectableTypes")] public CollectableType collectableType;
         
         [SerializeField] private GameObject dialogueBox;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class Inventory_UI : MonoBehaviour
         {
             ToggleInventory();
         }
+
+        SetUp();
     }
     public void ToggleInventory()
     {

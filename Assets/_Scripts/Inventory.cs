@@ -58,7 +58,7 @@ public class Inventory
             return;
          }
       }
-
+      
       foreach (Slot slot in slots)//if not already present in inventory 
       {
          if (slot.CollectableType == CollectableType.None)

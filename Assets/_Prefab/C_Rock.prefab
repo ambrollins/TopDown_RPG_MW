@@ -131,9 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e31c46c3457be8b429f4abb484a5e60e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableType: 0
+  collectableType: 1
   dialogueBox: {fileID: 0}
   dialogueText: {fileID: 0}
   dialogue: You Found Rock!
-  iconSprite: {fileID: 0}
+  iconSprite: {fileID: -414832161, guid: 22930c345757a5a4296bf64474844398, type: 3}
   bPlayerInRange: 0
