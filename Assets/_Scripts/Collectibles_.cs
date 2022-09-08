@@ -16,10 +16,10 @@ namespace _Scripts
         [FormerlySerializedAs("collectableTypes")] public CollectableType collectableType;
         
         [SerializeField] private GameObject dialogueBox;
-        // [SerializeField] private Text dialogueText;
-        // [SerializeField] private string dialogue;
+        [SerializeField] private Text dialogueText;
+        [SerializeField] private string dialogue;
         public Sprite iconSprite;
-        public TextMeshProUGUI _textMeshPro;
+        
 
         public bool bPlayerInRange;
         private void Start()
@@ -29,7 +29,7 @@ namespace _Scripts
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.E))
+            if(Input.GetKeyDown(KeyCode.E) && bPlayerInRange)
             {
                 //PlayerController.Instance.rocksCollectedCount++;
                 PlayerController.Instance.Inventory.AddItems(this);
@@ -53,8 +53,7 @@ namespace _Scripts
             {
                 bPlayerInRange = true;
                 print("in range");
-                _textMeshPro.gameObject.SetActive(true);
-
+                playerController._image.gameObject.SetActive(true);
             }
         }
         
@@ -62,7 +61,7 @@ namespace _Scripts
         {
             if (other.TryGetComponent(out PlayerController playerController)) 
             {
-                _textMeshPro.gameObject.SetActive(false);
+                playerController._image.gameObject.SetActive(false);
                 bPlayerInRange = false;
                 dialogueBox.SetActive(false);
                 print("not in range");

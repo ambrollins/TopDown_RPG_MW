@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ContactFilter2D moveFilter;
@@ -18,7 +19,9 @@ public class PlayerController : MonoBehaviour
     public int rocksCollectedCount = 0;
 
     public Inventory Inventory;
+    public GameObject _image;
     public static PlayerController Instance;
+    
 
     private void Awake()
     {

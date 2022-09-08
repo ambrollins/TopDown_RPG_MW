@@ -5,8 +5,7 @@ using UnityEngine;
 public class Inventory_UI : MonoBehaviour
 {
     public GameObject inventoryPanel;
-
-    private List<Slots_UI> slots = new List<Slots_UI>();
+    public List<Slots_UI> slots = new List<Slots_UI>();
     // Update is called once per frame
     void Update()
     {
