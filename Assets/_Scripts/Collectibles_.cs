@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Scripts
@@ -12,10 +13,12 @@ namespace _Scripts
         //! pops up to notify player about it
         //when pressed E and in range player can pick that item up
         //when taken to players inventory delete from environment
-        [SerializeField] private GameObject dialogueBox;
-        [SerializeField] private Text dialogueText;
-        [SerializeField] private string dialogue;
+        [FormerlySerializedAs("collectableTypes")] public CollectableType collectableType;
         
+        [SerializeField] private GameObject dialogueBox;
+        // [SerializeField] private Text dialogueText;
+        // [SerializeField] private string dialogue;
+        public Sprite iconSprite;
         public TextMeshProUGUI _textMeshPro;
 
         public bool bPlayerInRange;
@@ -28,7 +31,8 @@ namespace _Scripts
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                PlayerController.Instance.rocksCollectedCount++;
+                //PlayerController.Instance.rocksCollectedCount++;
+                PlayerController.Instance.Inventory.AddItems(this);
                 Debug.Log(PlayerController.Instance);
                 Destroy(this.gameObject);
             }
@@ -50,7 +54,7 @@ namespace _Scripts
                 bPlayerInRange = true;
                 print("in range");
                 _textMeshPro.gameObject.SetActive(true);
-               
+
             }
         }
         
@@ -65,4 +69,9 @@ namespace _Scripts
             }
         }
     }
+}
+
+public enum CollectableType
+{
+    None,Rocks
 }

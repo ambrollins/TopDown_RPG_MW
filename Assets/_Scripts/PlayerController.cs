@@ -16,12 +16,13 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     public int rocksCollectedCount = 0;
-    
-    [SerializeField] private Transform collectibles;
+
+    public Inventory Inventory;
     public static PlayerController Instance;
 
     private void Awake()
     {
+        Inventory = new Inventory(6);
         if (Instance == null)
         {
             Instance = this;
@@ -87,14 +88,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             return false; //no move_anim when no direction
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other) 
-    {
-        if(other.CompareTag("Collectibles"))
-        {
-            print("trigger for collectibles");
         }
     }
 
