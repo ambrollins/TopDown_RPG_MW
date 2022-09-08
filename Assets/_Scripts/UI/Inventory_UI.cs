@@ -14,12 +14,14 @@ public class Inventory_UI : MonoBehaviour
         {
             ToggleInventory();
         }
-
-        SetUp();
     }
     public void ToggleInventory()
     {
-        if (!inventoryPanel.activeSelf) { inventoryPanel.SetActive(true);}
+        if (!inventoryPanel.activeSelf)
+        {
+            inventoryPanel.SetActive(true);
+            SetUp();
+        }
         else { inventoryPanel.SetActive(false);}
     }
 
@@ -39,5 +41,11 @@ public class Inventory_UI : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Remove(int SlotIndex)
+    {
+        PlayerController.Instance.Inventory.Remove(SlotIndex);
+        SetUp();
     }
 }

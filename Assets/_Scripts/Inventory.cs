@@ -36,6 +36,20 @@ public class Inventory
          this.iconSprite = item.iconSprite;
          Count++;
       }
+
+      public void RemoveItem()
+      {
+         if (Count > 0) //has atleast one item
+         {
+            Count--;
+            if (Count == 0)//remove icon 
+            {
+               iconSprite = null;
+               CollectableType = CollectableType.None;
+            }
+            
+         }
+      }
    }
    public List<Slot> slots = new List<Slot>();
 
@@ -67,5 +81,10 @@ public class Inventory
             return;
          }
       }
+   }
+
+   public void Remove(int index)
+   {
+      slots[index].RemoveItem();
    }
 }

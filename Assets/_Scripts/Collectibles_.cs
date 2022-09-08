@@ -35,7 +35,7 @@ namespace _Scripts
                 //PlayerController.Instance.rocksCollectedCount++;
                 PlayerController.Instance.Inventory.AddItems(this);
                 Debug.Log(PlayerController.Instance);
-                Destroy(this.gameObject);
+                Destroy(this.gameObject);  
             }
             // if (!Input.GetKeyDown(KeyCode.E) || !bPlayerInRange) return;
             // if (dialogueBox.activeInHierarchy)
