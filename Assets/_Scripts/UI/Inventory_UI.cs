@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts;
 using UnityEngine;
 
 public class Inventory_UI : MonoBehaviour
@@ -45,7 +46,14 @@ public class Inventory_UI : MonoBehaviour
 
     public void Remove(int SlotIndex)
     {
-        PlayerController.Instance.Inventory.Remove(SlotIndex);
-        SetUp();
+        Collectibles_ itemToDrop =
+            GameManager.Instance.ItemManager.GetItemByType((PlayerController.Instance.Inventory.slots[SlotIndex]
+                .CollectableType));
+        if (itemToDrop != null)//check if we can drop
+        {
+            PlayerController.Instance.DropItem(itemToDrop);
+            PlayerController.Instance.Inventory.Remove(SlotIndex);
+            SetUp();
+        }
     }
 }

@@ -64,7 +64,6 @@ namespace _Scripts
             {
                 playerController._image.gameObject.SetActive(false);
                 bPlayerInRange = false;
-                dialogueBox.SetActive(false);
                 print("not in range");
             }
         }

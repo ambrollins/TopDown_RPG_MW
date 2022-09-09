@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using _Scripts;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ContactFilter2D moveFilter;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float collisionOffset = .5f;
+    
+    //[SerializeField] private float xPos = .5f;
+    //[SerializeField] private float yPos = .5f;
+    
     private Rigidbody2D _rigidbody2D;
     private Vector2 _movementInput;
 
@@ -21,6 +26,7 @@ public class PlayerController : MonoBehaviour
     public Inventory Inventory;
     public GameObject _image;
     public static PlayerController Instance;
+    public Inventory_UI InventoryUI;
     
 
     private void Awake()
@@ -97,5 +103,38 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputValue inputValue)
     {
         _movementInput = inputValue.Get<Vector2>();
+    }
+
+
+    private Vector3 mousePosInWorld;
+    public void DropItemOnMousePos()
+    {
+        IsItemPicked = false;
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
+        mousePosInWorld.z = 0;
+        Instantiate(itemPicked, mousePosInWorld ,Quaternion.identity);
+    }
+
+    private void Update()
+    {
+        if ( IsItemPicked)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                DropItemOnMousePos();
+            }
+        }
+    }
+
+    private bool IsItemPicked;
+    private Collectibles_ itemPicked;
+    public void DropItem(Collectibles_ item)
+    {
+        IsItemPicked = true;
+        InventoryUI.ToggleInventory();
+        // Vector3 spawnLocation = transform.position;
+        // Vector3 spawnOffset = new Vector3(xPos,yPos,0);
+        itemPicked = item;
     }
 }
