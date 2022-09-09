@@ -113,27 +113,16 @@ public class PlayerController : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         mousePosInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
         mousePosInWorld.z = 0;
-        //Debug.Log(mousePosInWorld + "mousePosInWorld"+transform.localPosition+"transform.localPosition" +transform.position+"transform.position");
-        //if ( Vector3.Distance <  )
-        Vector3.Distance(mousePosInWorld, transform.position);
-        Debug.Log( Vector3.Distance(mousePosInWorld, transform.position));
         Instantiate(itemPicked, mousePosInWorld ,Quaternion.identity);
     }
-
-    //public bool IsRemoved = false;
 
     private void Update()
     {
         if ( IsItemPicked)
         {
-            if (Input.GetMouseButtonDown(0) && Vector3.Distance(mousePosInWorld, transform.position)<.25 )//check if range is greater than the reach limit
+            if (Input.GetMouseButton(0))
             {
-                //IsRemoved = true;
                 DropItemOnMousePos();
-            }
-            else if(Input.GetMouseButtonDown(0) && Vector3.Distance(mousePosInWorld, transform.position)>.25)
-            {
-                print("you cant place this far");
             }
         }
     }
