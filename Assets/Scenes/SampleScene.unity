@@ -35379,6 +35379,10 @@ PrefabInstance:
       propertyPath: yPos
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1803422687556426316, guid: bc3c071eaddd27d4cae633c4148bbb41, type: 3}
+      propertyPath: InventoryUI
+      value: 
+      objectReference: {fileID: 1679784628}
     - target: {fileID: 4302048713328857992, guid: bc3c071eaddd27d4cae633c4148bbb41, type: 3}
       propertyPath: m_Radius
       value: 0.2

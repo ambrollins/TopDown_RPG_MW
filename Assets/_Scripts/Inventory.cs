@@ -41,13 +41,13 @@ public class Inventory
       {
          if (Count > 0) //has atleast one item
          {
+            //if(PlayerController.Instance.IsRemoved == true)
             Count--;
             if (Count == 0)//remove icon 
             {
                iconSprite = null;
                CollectableType = CollectableType.None;
             }
-            
          }
       }
    }
