@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     public GameObject _image;
     public static PlayerController Instance;
     public Inventory_UI InventoryUI;
-    
 
+    public float dropDistance;
     private void Awake()
     {
         Inventory = new Inventory(6);
@@ -112,17 +112,28 @@ public class PlayerController : MonoBehaviour
         IsItemPicked = false;
         Vector3 mousePosition = Input.mousePosition;
         mousePosInWorld = Camera.main.ScreenToWorldPoint(mousePosition);
-        mousePosInWorld.z = 0;
-        Instantiate(itemPicked, mousePosInWorld ,Quaternion.identity);
+        mousePosInWorld.z = 0; 
+        Instantiate(itemPicked,mousePosInWorld,Quaternion.identity);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, .3f);
+    }
+
 
     private void Update()
     {
         if ( IsItemPicked)
         {
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButtonDown(0))
             {
-                DropItemOnMousePos();
+                Vector3 gg = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+                Debug.DrawLine(transform.position,gg);
+                float _distance = Vector3.Distance(transform.position,gg);
+                if(_distance<.3f)
+                 DropItemOnMousePos();
             }
         }
     }

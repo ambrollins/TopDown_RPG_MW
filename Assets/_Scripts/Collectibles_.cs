@@ -32,6 +32,7 @@ namespace _Scripts
         {
             if(Input.GetKeyDown(KeyCode.E) && bPlayerInRange)
             {
+                print("E is Working");
                 //PlayerController.Instance.rocksCollectedCount++;
                 PlayerController.Instance.Inventory.AddItems(this);
                 Debug.Log(PlayerController.Instance);
