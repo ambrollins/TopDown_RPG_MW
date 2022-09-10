@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -38,16 +35,6 @@ namespace _Scripts
                 Debug.Log(PlayerController.Instance);
                 Destroy(this.gameObject);  
             }
-            // if (!Input.GetKeyDown(KeyCode.E) || !bPlayerInRange) return;
-            // if (dialogueBox.activeInHierarchy)
-            // {
-            //     dialogueBox.SetActive(false);
-            // }
-            // else
-            // {
-            //     dialogueBox.SetActive(true);
-            //     dialogueText.text = dialogue;
-            // }
         }
         private void OnTriggerEnter2D(Collider2D col)
         {

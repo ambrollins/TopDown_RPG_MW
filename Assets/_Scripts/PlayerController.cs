@@ -1,18 +1,15 @@
-using System;
 using System.Collections.Generic;
 using _Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
+using UnityEngine.Serialization;
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ContactFilter2D moveFilter;
     [SerializeField] private float moveSpeed = 1f;
     [SerializeField] private float collisionOffset = .5f;
     
-    //[SerializeField] private float xPos = .5f;
-    //[SerializeField] private float yPos = .5f;
     
     private Rigidbody2D _rigidbody2D;
     private Vector2 _movementInput;
@@ -20,15 +17,12 @@ public class PlayerController : MonoBehaviour
     private List<RaycastHit2D> _collision2Ds = new List<RaycastHit2D>();
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
-
-    public int rocksCollectedCount = 0;
-
+    
     public Inventory Inventory;
     public GameObject _image;
     public static PlayerController Instance;
     public Inventory_UI InventoryUI;
-
-    public float dropDistance;
+    [SerializeField] private float maxPlacementRadius = .3f;
     private void Awake()
     {
         Inventory = new Inventory(6);
@@ -129,10 +123,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                //ACTAUL mouse point to world distance ~ gg
+                //remove z angle depth/height
                 Vector3 gg = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
                 Debug.DrawLine(transform.position,gg);
                 float _distance = Vector3.Distance(transform.position,gg);
-                if(_distance<.3f)
+                if(_distance<maxPlacementRadius)
                  DropItemOnMousePos();
             }
         }
